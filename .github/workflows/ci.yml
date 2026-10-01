@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
 
@@ -25,7 +25,12 @@ jobs:
       - name: Install
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[dev]"
+          # Pin the scientific stack to the versions in requirements.lock.txt:
+          # numpy Generator streams and scipy L-BFGS are NOT stable across
+          # versions/BLAS backends, and the BO loop amplifies numeric drift
+          # chaotically — unpinned runs would make the quality gates flaky.
+          python -m pip install "numpy==2.5.3" "scipy==1.18.1" "pytest==9.1.1" "ruff==0.16.9"
+          python -m pip install -e . --no-deps
 
       - name: Lint
         run: ruff check bayesforge tests examples
