@@ -5,7 +5,7 @@
 Author: **晨星**
 
 ![CI](https://github.com/CJX0712/bayesforge/actions/workflows/ci.yml/badge.svg)
-![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
+![Python](https://img.shields.io/badge/python-3.12%20%7C%203.13-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Deps](https://img.shields.io/badge/deps-numpy%20%2B%20scipy-orange)
 ![Determinism](https://img.shields.io/badge/determinism-%CE%94%3C1e--9-brightgreen)
